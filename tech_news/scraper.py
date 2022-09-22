@@ -1,6 +1,23 @@
+import requests as req
+import time
+
+
 # Requisito 1
 def fetch(url):
-    """Seu código deve vir aqui"""
+    time.sleep(1)
+    headers = {'user-agent', 'Fake user-agent'}
+    timeout = 3
+
+    try:
+        response = req.get(url, headers, timeout)
+
+    except req.ReadTimeout:
+        return None
+
+    if response.status_code == 200:
+        return response.text
+
+    return None
 
 
 # Requisito 2
